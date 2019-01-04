@@ -118,7 +118,8 @@ def test():
 
     # run model
     out = model.predict(test_names)
-    print(out)
+    labels = [('M' if p[0] > p[1] else 'F') for p in out]
+    print(labels)
 
 if __name__ == '__main__':
     train()
