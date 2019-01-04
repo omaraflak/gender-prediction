@@ -1,8 +1,6 @@
-from keras.layers.core import Dense, Activation, Dropout
-from keras.models import model_from_json
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.layers import LSTM
+from keras.layers import Dense, LSTM
+from keras.layers.core import Activation, Dropout
+from keras.models import Sequential, model_from_json
 
 import pandas as pd
 import numpy as np
