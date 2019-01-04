@@ -56,7 +56,7 @@ def read_model(network_path):
     model.load_weights(os.path.join(network_path, 'weights.h5'))
     return model, data
 
-def main():
+def train():
     train_X, train_Y, test_X, test_Y, max_len, vocab_len, char_index = load_training()
 
     model = Sequential()
@@ -77,12 +77,21 @@ def main():
     data = {"max_len": max_len, "vocab_len": vocab_len, "char_index": char_index}
     save_model(model, data, 'model')
 
-    # testing on new data...
-    test_names = ['omar', 'george', 'alexandre', 'julie', 'nisrine', 'charlotte']
+def test():
+    model, data = read_model('model')
+    max_len = data['max_len']
+    vocab_len = data['vocab_len']
+    char_index = data['char_index']
+
+    test_names = ['Omar', 'George', 'Alexandre', 'Julie', 'Nisrine', 'Charlotte']
+    test_names = [s.lower() for s in test_names]
     test_names = [list(i)+['END']*(max_len-len(i)) for i in test_names]
     test_names = [[get_output(char_index[j], vocab_len) for j in i] for i in test_names]
     test_names = np.asarray(test_names)
-    print(model.predict(test_names))
+
+    out = model.predict(test_names)
+    print(out)
 
 if __name__ == '__main__':
-    main()
+    train()
+    test()
