@@ -1,6 +1,6 @@
 # Gender Prediction
 
-RNN trained to predict gender from name. Names database is from [data.gouv.fr](https://www.data.gouv.fr/fr/datasets/liste-des-prenoms-2004-a-2017/).
+RNN trained to predict gender from French name. Names database is from [data.gouv.fr](https://www.data.gouv.fr/fr/datasets/liste-des-prenoms-2004-a-2017/).
 
 # Pre-trained model
 
