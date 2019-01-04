@@ -77,11 +77,6 @@ def main():
     data = {"max_len": max_len, "vocab_len": vocab_len, "char_index": char_index}
     save_model(model, data, 'model')
 
-    # model, data = read_model('model')
-    # max_len = data['max_len']
-    # vocab_len = data['vocab_len']
-    # char_index = data['char_index']
-
     # testing on new data...
     test_names = ['omar', 'george', 'alexandre', 'julie', 'nisrine', 'charlotte']
     test_names = [list(i)+['END']*(max_len-len(i)) for i in test_names]
