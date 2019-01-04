@@ -12,7 +12,8 @@ max_len = data['max_len']
 vocab_len = data['vocab_len']
 char_index = data['char_index']
 
-test_names = ['george', 'julie']
+test_names = ['George', 'Julie']
+test_names = [s.lower() for s in test_names]
 test_names = [list(i)+['END']*(max_len-len(i)) for i in test_names]
 test_names = [[get_output(char_index[j], vocab_len) for j in i] for i in test_names]
 test_names = np.asarray(test_names)
