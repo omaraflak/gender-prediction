@@ -7,7 +7,7 @@ import numpy as np
 
 from keras.layers import Dense, LSTM
 from keras.layers.core import Activation, Dropout
-from keras.models import Sequential, model_from_json
+from keras.models import Sequential, load_model
 
 import pandas as pd
 
@@ -58,16 +58,16 @@ def save_model(model, data, network_path):
     if not os.path.exists(network_path):
         os.makedirs(network_path)
     open(os.path.join(network_path, 'data.json'), 'w').write(json.dumps(data))
-    open(os.path.join(network_path, 'architecture.json'), 'w').write(model.to_json())
-    model.save_weights(os.path.join(network_path, 'weights.h5'), overwrite=True)
+    model.save(os.path.join(network_path, 'rnn.model'))
 
 def read_model(network_path):
     """
     Load model architecture and weights from files
     """
+    if not os.path.exists(network_path):
+        raise ValueError('Path not found : {}'.format(network_path))
     data = json.loads(open(os.path.join(network_path, 'data.json')).read())
-    model = model_from_json(open(os.path.join(network_path, 'architecture.json')).read())
-    model.load_weights(os.path.join(network_path, 'weights.h5'))
+    model = load_model(os.path.join(network_path, 'rnn.model'))
     return model, data
 
 def train():
