@@ -24,7 +24,7 @@ print(out)
 
 # Docker
 
-You can run a dockerized version of this program that uses Flask to create a GenderAPI. 
+Using Flask you can easily make a GenderAPI. The image is on Docker.
 
 ```
 docker pull omaraflak/genderapi:v1
