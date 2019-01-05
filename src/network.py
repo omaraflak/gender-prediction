@@ -3,12 +3,12 @@ RNN able to predict gender from name
 """
 import os
 import json
+import numpy as np
 
 from keras.layers import Dense, LSTM
 from keras.layers.core import Activation, Dropout
 from keras.models import Sequential, model_from_json
 
-import numpy as np
 import pandas as pd
 
 def get_output(i, n):
@@ -97,14 +97,14 @@ def train():
 
     # save model
     data = {"max_len": max_len, "vocab_len": vocab_len, "char_index": char_index}
-    save_model(model, data, 'model')
+    save_model(model, data, '../model')
 
 def test():
     """
     Load model from files and test it
     """
     # read trained model
-    model, data = read_model('model')
+    model, data = read_model('../model')
     max_len = data['max_len']
     vocab_len = data['vocab_len']
     char_index = data['char_index']
