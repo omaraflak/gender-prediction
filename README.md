@@ -21,3 +21,11 @@ test_names = np.asarray(test_names)
 out = model.predict(test_names)
 print(out)
 ```
+
+# Docker
+
+You can run a dockerized version of this program that uses Flask to create a GenderAPI. 
+
+```
+docker pull omaraflak/genderapi:v1
+```
