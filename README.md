@@ -37,7 +37,7 @@ names = ['Bob', 'Alice']
 labels = api.predict(names)
 ```
 
-# GenderAPI with Flask
+# Run GenderAPI with Flask
 
 Run the flask server :
 
@@ -46,6 +46,20 @@ python server.py
 ```
 
 Test it with curl :
+
+```
+curl -H 'Content-Type: application/json' --data '["Bob", "Alice"]' localhost:4000/predict
+```
+
+# Run GenderAPI in Docker
+
+Build container,
+
+```
+docker-compose build
+```
+
+Then,
 
 ```
 curl -H 'Content-Type: application/json' --data '["Bob", "Alice"]' localhost:4000/predict
