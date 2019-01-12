@@ -1,4 +1,4 @@
-# Gender Prediction
+# Gender Prediction API
 
 RNN trained to predict gender from French name. Names database is from [data.gouv.fr](https://www.data.gouv.fr/fr/datasets/liste-des-prenoms-2004-a-2017/).
 
