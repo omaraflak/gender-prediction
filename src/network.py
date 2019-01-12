@@ -11,7 +11,7 @@ from keras.models import Sequential, load_model
 
 import pandas as pd
 
-def get_output(i, n):
+def vector(i, n):
     """
     Return vector of n "zeros" and a "one" at index i
     """
@@ -37,14 +37,14 @@ def load_training(csv_file):
 
     train_x = data_train['name']
     train_x = [list(i)+['END']*(max_len-len(i)) for i in train_x]
-    train_x = [[get_output(char_index[j], vocab_len) for j in i] for i in train_x]
+    train_x = [[vector(char_index[j], vocab_len) for j in i] for i in train_x]
     train_y = [([1, 0] if i == 'M' else [0, 1]) for i in data_train['gender']]
     train_x = np.asarray(train_x)
     train_y = np.asarray(train_y)
 
     test_x = data_test['name']
     test_x = [list(i)+['END']*(max_len-len(i)) for i in test_x]
-    test_x = [[get_output(char_index[j], vocab_len) for j in i] for i in test_x]
+    test_x = [[vector(char_index[j], vocab_len) for j in i] for i in test_x]
     test_y = [([1, 0] if i == 'M' else [0, 1]) for i in data_test['gender']]
     test_x = np.asarray(test_x)
     test_y = np.asarray(test_y)
@@ -113,7 +113,7 @@ def test():
     test_names = ['Omar', 'George', 'Alexandre', 'Julie', 'Nisrine', 'Charlotte']
     test_names = [s.lower() for s in test_names]
     test_names = [list(i)+['END']*(max_len-len(i)) for i in test_names]
-    test_names = [[get_output(char_index[j], vocab_len) for j in i] for i in test_names]
+    test_names = [[vector(char_index[j], vocab_len) for j in i] for i in test_names]
     test_names = np.asarray(test_names)
 
     # run model
