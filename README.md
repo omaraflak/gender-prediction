@@ -16,7 +16,7 @@ max_len = data['max_len']
 vocab_len = data['vocab_len']
 char_index = data['char_index']
 
-test_names = ['George', 'Julie']
+test_names = ['Bob', 'Alice']
 test_names = [s.lower() for s in test_names]
 test_names = [list(i)+['END']*(max_len-len(i)) for i in test_names]
 test_names = [[vector(char_index[j], vocab_len) for j in i] for i in test_names]
@@ -33,7 +33,7 @@ You can use `GenderAPI` wrapper.
 ```python
 from gender_api import GenderAPI
 api = GenderAPI()
-names = ['George', 'Julie']
+names = ['Bob', 'Alice']
 labels = api.predict(names)
 ```
 
@@ -48,5 +48,5 @@ python server.py
 Test it with curl :
 
 ```
-curl -H 'Content-Type: application/json' --data '["George", "Julie"]' localhost:4000/predict
+curl -H 'Content-Type: application/json' --data '["Bob", "Alice"]' localhost:4000/predict
 ```
