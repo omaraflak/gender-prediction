@@ -75,7 +75,7 @@ def train():
     Train the model
     """
     # load training data
-    train_x, train_y, test_x, test_y, max_len, vocab_len, char_index = load_training('names.csv')
+    train_x, train_y, test_x, test_y, max_len, vocab_len, char_index = load_training('data/names.csv')
 
     # build model
     model = Sequential()
@@ -88,7 +88,7 @@ def train():
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
     # train model
-    model.fit(train_x, train_y, batch_size=128, nb_epoch=30, validation_data=(test_x, test_y))
+    model.fit(train_x, train_y, batch_size=128, nb_epoch=1, validation_data=(test_x, test_y))
 
     # test model
     loss, acc = model.evaluate(test_x, test_y)
@@ -97,14 +97,14 @@ def train():
 
     # save model
     data = {"max_len": max_len, "vocab_len": vocab_len, "char_index": char_index}
-    save_model(model, data, '../model')
+    save_model(model, data, 'model')
 
 def test():
     """
     Load model from files and test it
     """
     # read trained model
-    model, data = read_model('../model')
+    model, data = read_model('model')
     max_len = data['max_len']
     vocab_len = data['vocab_len']
     char_index = data['char_index']

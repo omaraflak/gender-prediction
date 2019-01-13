@@ -8,7 +8,7 @@ import tensorflow as tf
 class GenderAPI:
     def __init__(self):
         self.graph = tf.get_default_graph()
-        self.model, data = self.read_model('../model')
+        self.model, data = self.read_model('model')
         self.max_len = data['max_len']
         self.vocab_len = data['vocab_len']
         self.char_index = data['char_index']
