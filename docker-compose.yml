@@ -6,3 +6,4 @@ services:
     - "4000:4000"
     volumes:
     - ./:/usr/src/app
+    command: "python src/server.py"
