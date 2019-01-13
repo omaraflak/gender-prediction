@@ -42,7 +42,7 @@ labels = api.predict(names)
 Run the flask server :
 
 ```
-python server.py
+python src/server.py
 ```
 
 Test it with curl :
@@ -63,4 +63,10 @@ Then,
 
 ```
 curl -H 'Content-Type: application/json' --data '["Bob", "Alice"]' localhost:4000/predict
+```
+
+# Train the model on your machine
+
+```
+python src/network.py
 ```
